@@ -85,9 +85,11 @@
       <v-container class="pa-0">
             <v-parallax
               dark
+              height="500"
               class="home-page-parallax"
-              src="../public/img/icons/cinema.jpg">
+              src="https://image.galaxymacau.com/cinema_02.jpg?x-oss-process=image/resize,m_fill,w_1920,h_933/format,webp">
               <div class="paralax-overlay"></div>
+              <div class="paralax-gradient"></div>
               <v-row
                 align="center"
                 justify="center"
@@ -103,31 +105,31 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      source: String,
-    },
-    data: () => ({
-      drawer: null,
-      items: [
-        { icon: 'trending_up', text: 'Most Popular' },
-        { icon: 'subscriptions', text: 'Subscriptions' },
-        { icon: 'history', text: 'History' },
-        { icon: 'featured_play_list', text: 'Playlists' },
-        { icon: 'watch_later', text: 'Watch Later' },
-      ],
-      items2: [
-        { picture: 28, text: 'Joseph' },
-        { picture: 38, text: 'Apple' },
-        { picture: 48, text: 'Xbox Ahoy' },
-        { picture: 58, text: 'Nokia' },
-        { picture: 78, text: 'MKBHD' },
-      ],
-    }),
-    created () {
-      this.$vuetify.theme.dark = true
-    },
+export default {
+  props: {
+    source: String
+  },
+  data: () => ({
+    drawer: null,
+    items: [
+      { icon: 'trending_up', text: 'Most Popular' },
+      { icon: 'subscriptions', text: 'Subscriptions' },
+      { icon: 'history', text: 'History' },
+      { icon: 'featured_play_list', text: 'Playlists' },
+      { icon: 'watch_later', text: 'Watch Later' }
+    ],
+    items2: [
+      { picture: 28, text: 'Joseph' },
+      { picture: 38, text: 'Apple' },
+      { picture: 48, text: 'Xbox Ahoy' },
+      { picture: 58, text: 'Nokia' },
+      { picture: 78, text: 'MKBHD' }
+    ]
+  }),
+  created () {
+    this.$vuetify.theme.dark = true
   }
+}
 </script>
 
 <style>
@@ -144,9 +146,16 @@
 .v-parallax__content {
   padding: 0px !important;
 }
+.paralax-gradient {
+  background: -webkit-linear-gradient(top, rgba(3,3,3,0) 0%, rgba(35,35,35,0) 71%, rgba(48,48,48,1) 100%);  opacity: 1;
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+}
+
 .paralax-overlay {
   background: black;
-  opacity: 0.5;
+  opacity: 0.3;
   width: 100vw;
   height: 100%;
   position: absolute;
@@ -156,4 +165,9 @@
   font-size: 80px;
   font-weight: 300;
 }
+
+.v-parallax__image {
+  bottom: -50px !important;
+}
+
 </style>
