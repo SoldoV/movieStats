@@ -98,14 +98,25 @@
                 <h4 class="subheading">Your most important movie statistics in one place!</h4>
               </v-row>
             </v-parallax>
-            <div style="height: 100vh">dsa</div>
       </v-container>
     </v-content>
+    <div style="height: 100vh">
+      <chart></chart>
+    </div>
   </v-app>
 </template>
 
 <script>
+import Chart from './components/Chart.vue'
+import StockChart from './components/StockChart'
+import MapChart from './components/MapChart'
+
 export default {
+  components: {
+    chart: Chart,
+    stockChart: StockChart,
+    mapChart: MapChart
+  },
   props: {
     source: String
   },
