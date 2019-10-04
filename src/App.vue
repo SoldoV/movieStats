@@ -110,6 +110,7 @@
 import Chart from './components/Chart.vue'
 import StockChart from './components/StockChart'
 import MapChart from './components/MapChart'
+import db from './components/firebaseInit'
 
 export default {
   components: {
@@ -139,6 +140,12 @@ export default {
   }),
   created () {
     this.$vuetify.theme.dark = true
+    db.collection('allTimeTopRated').get().then
+    (querySnapshot => {
+      querySnapshot.forEach(doc => {
+        console.log(doc.data())
+      })
+    })
   }
 }
 </script>
