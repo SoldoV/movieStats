@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import wellomePage from './components/wellomePage.vue'
+import allTime from './components/allTime.vue'
+import byYear from './components/byYear.vue'
+import actor from './components/actor.vue'
+import director from './components/director.vue'
 
 Vue.use(Router)
 
@@ -10,16 +14,28 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'wellomePage',
+      component: wellomePage
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+      path: '/allTime',
+      name: 'allTime',
+      component: allTime
+    },
+    {
+      path: '/byYear',
+      name: 'byYear',
+      component: byYear
+    },
+    {
+      path: '/actor/:name',
+      name: 'actor',
+      component: actor
+    },
+    {
+      path: '/director/:name',
+      name: 'director',
+      component: director
+    },
   ]
 })

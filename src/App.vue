@@ -1,191 +1,310 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      clipped
-    >
-      <v-list dense>
-        <v-list-item
-          v-for="item in items"
-          :key="item.text"
-          @click=""
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
+    <v-navigation-drawer v-model="drawer" app clipped>
+      <v-list dense class="side-list">
+        <v-list-item>
+          <router-link to="/allTime">
+            <v-list-item-action>
+              <v-icon>local_movies</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Best movies of all time
+              </v-list-item-title>
+            </v-list-item-content>
+          </router-link>
+        </v-list-item>
+        <v-list-item>
+          <router-link to="/byYear">
+            <v-list-item-action>
+              <v-icon>equalizer</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Best movies by year
+              </v-list-item-title>
+            </v-list-item-content>
+          </router-link>
+        </v-list-item>
+        <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>
-              {{ item.text }}
-            </v-list-item-title>
+            <v-expansion-panels>
+              <v-expansion-panel>
+                <v-expansion-panel-header>
+                  <v-icon>portrait</v-icon>
+                  Best movies by actors
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  <v-list class="avatar-list">
+                    <v-list-item v-for="actor in actors" :key="actor.name" @click="" class="my-3">
+                      <router-link :to="{ name: 'actor', params: { name: actor.params }}">
+                        <div class="avatar-div mr-2">
+                          <div class="avatar" :style="{ backgroundImage: `url(${getImgUrl(actor.picture)})` }"></div>
+                        </div>
+                        <v-list-item-title v-text="actor.name"></v-list-item-title>
+                      </router-link>
+                    </v-list-item>
+                  </v-list>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
           </v-list-item-content>
         </v-list-item>
-        <v-subheader class="mt-4 grey--text text--darken-1">SUBSCRIPTIONS</v-subheader>
-        <v-list>
-          <v-list-item
-            v-for="item in items2"
-            :key="item.text"
-            @click=""
-          >
-            <v-list-item-avatar>
-              <img
-                :src="`https://randomuser.me/api/portraits/men/${item.picture}.jpg`"
-                alt=""
-              >
-            </v-list-item-avatar>
-            <v-list-item-title v-text="item.text"></v-list-item-title>
-          </v-list-item>
-        </v-list>
-        <v-list-item
-          class="mt-4"
-          @click=""
-        >
-          <v-list-item-action>
-            <v-icon color="grey darken-1">mdi-plus-circle-outline</v-icon>
-          </v-list-item-action>
-          <v-list-item-title class="grey--text text--darken-1">Browse Channels</v-list-item-title>
-        </v-list-item>
-        <v-list-item @click="">
-          <v-list-item-action>
-            <v-icon color="grey darken-1">mdi-settings</v-icon>
-          </v-list-item-action>
-          <v-list-item-title class="grey--text text--darken-1">Manage Subscriptions</v-list-item-title>
+        <v-list-item>
+          <v-list-item-content>
+            <v-expansion-panels>
+              <v-expansion-panel>
+                <v-expansion-panel-header>
+                  <v-icon>movie</v-icon>
+                  Best movies by directors
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  <v-list>
+                    <v-list-item v-for="director in directors" :key="director.name" @click="" class="my-3">
+                      <router-link :to="{ name: 'director', params: { name: director.params }}">
+                        <div class="avatar-div mr-2">
+                          <div class="avatar" :style="{ backgroundImage: `url(${getImgUrl(director.picture)})` }"></div>
+                        </div>
+                        <v-list-item-title v-text="director.name"></v-list-item-title>
+                      </router-link>
+                    </v-list-item>
+                  </v-list>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar
-      app
-      clipped-left
-      color="red"
-      dense
-    >
+    <v-app-bar app clipped-left color="red" dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-icon class="mx-4">fab fa-youtube</v-icon>
       <v-toolbar-title class="mr-12 align-center">
-        <span class="title">Movie-Stats</span>
+        <router-link to="/">
+          <span class="title">Movie-Stats</span>
+        </router-link>
       </v-toolbar-title>
-      <div class="flex-grow-1"></div>
-      <v-row
-        align="center"
-        style="max-width: 650px"
-      >
-        <v-text-field
-          :append-icon-cb="() => {}"
-          placeholder="Search..."
-          single-line
-          append-icon="search"
-          color="white"
-          hide-details
-        ></v-text-field>
-      </v-row>
     </v-app-bar>
 
     <v-content>
       <v-container class="pa-0">
-            <v-parallax
-              dark
-              height="500"
-              class="home-page-parallax"
-              src="https://image.galaxymacau.com/cinema_02.jpg?x-oss-process=image/resize,m_fill,w_1920,h_933/format,webp">
-              <div class="paralax-overlay"></div>
-              <div class="paralax-gradient"></div>
-              <v-row
-                align="center"
-                justify="center"
-                class="paralax-header-title">
-                <h1 class="header-title mb-2">Movie statistics</h1>
-                <h4 class="subheading">Your most important movie statistics in one place!</h4>
-              </v-row>
-            </v-parallax>
+        <v-parallax dark height="500" class="home-page-parallax"
+          src="https://image.galaxymacau.com/cinema_02.jpg?x-oss-process=image/resize,m_fill,w_1920,h_933/format,webp">
+          <div class="paralax-overlay"></div>
+          <div class="paralax-gradient"></div>
+          <v-row align="center" justify="center" class="paralax-header-title">
+            <h1 class="header-title mb-2">Movie statistics</h1>
+            <h4 class="subheading">Your most important movie statistics in one place!</h4>
+          </v-row>
+        </v-parallax>
       </v-container>
     </v-content>
-    <div style="height: 100vh">
-      <chart></chart>
+    <div class="charts mt-10">
+      <router-view :key="$route.fullPath"></router-view>
     </div>
   </v-app>
 </template>
 
 <script>
-import Chart from './components/Chart.vue'
-import StockChart from './components/StockChart'
-import MapChart from './components/MapChart'
-import db from './components/firebaseInit'
+  import allTime from './components/allTime.vue'
+  import db from './components/firebaseInit'
+  import sal from 'sal.js';
 
-export default {
-  components: {
-    chart: Chart,
-    stockChart: StockChart,
-    mapChart: MapChart
-  },
-  props: {
-    source: String
-  },
-  data: () => ({
-    drawer: null,
-    items: [
-      { icon: 'trending_up', text: 'Most Popular' },
-      { icon: 'subscriptions', text: 'Subscriptions' },
-      { icon: 'history', text: 'History' },
-      { icon: 'featured_play_list', text: 'Playlists' },
-      { icon: 'watch_later', text: 'Watch Later' }
-    ],
-    items2: [
-      { picture: 28, text: 'Joseph' },
-      { picture: 38, text: 'Apple' },
-      { picture: 48, text: 'Xbox Ahoy' },
-      { picture: 58, text: 'Nokia' },
-      { picture: 78, text: 'MKBHD' }
-    ]
-  }),
-  created () {
-    this.$vuetify.theme.dark = true
-    db.collection('allTimeTopRated').get().then
-    (querySnapshot => {
-      querySnapshot.forEach(doc => {
-        console.log(doc.data())
-      })
-    })
+  export default {
+    components: {
+      allTime: allTime,
+    },
+    props: {
+      source: String
+    },
+    data: () => ({
+      drawer: false,
+      actors: [{
+          name: 'Leonardo DiCaprio',
+          picture: 'dicaprio.jpg',
+          params: 'dicaprio'
+        },
+        {
+          name: 'Jack Nicholson',
+          picture: 'nicholson.jpg',
+          params: 'nicholson'
+        },
+        {
+          name: 'Robert De Niro',
+          picture: 'deniro.jpg',
+          params: 'deniro'
+        },
+        {
+          name: 'Christian Bale',
+          picture: 'bale.jpg',
+          params: 'bale'
+        },
+        {
+          name: 'Matthew Mcconaughey',
+          picture: 'matthew.jpg',
+          params: 'matthew'
+        },
+        {
+          name: 'All together',
+          picture: null,
+          params: 'all'
+        }
+      ],
+      directors: [{
+          name: 'Christopher Nolan',
+          picture: 'nolan.jpg',
+          params: 'nolan'
+        },
+        {
+          name: 'David Fincher',
+          picture: 'fincher.jpg',
+          params: 'fincher'
+        },
+        {
+          name: 'Martin Scorsese',
+          picture: 'scorsese.jpg',
+          params: 'scorsese'
+        },
+        {
+          name: 'Quentin Tarantino',
+          picture: 'tarantino.jpg',
+          params: 'tarantino'
+        },
+        {
+          name: 'Stanley Kubrick',
+          picture: 'kubrick.jpg',
+          params: 'kubrick'
+        },
+        {
+          name: 'All together',
+          picture: null,
+          params: 'all'
+        }
+      ],
+      years: [2019, 2018, 2017, 2016, 2015]
+
+    }),
+    methods: {
+      getImgUrl(pic) {
+        return pic ? require('./assets/' + pic) : '';
+      },
+    },
+    created() {
+      this.$vuetify.theme.dark = true
+    },
+    mounted() {
+      sal();
+    }
   }
-}
+
 </script>
 
 <style>
-.home-page-parallax {
-  width: 100vw;
-}
-.paralax-header-title {
-  flex-direction: column;
-  z-index: 2;
-}
-.container {
-  margin: 0px !important;
-}
-.v-parallax__content {
-  padding: 0px !important;
-}
-.paralax-gradient {
-  background: -webkit-linear-gradient(top, rgba(3,3,3,0) 0%, rgba(35,35,35,0) 71%, rgba(48,48,48,1) 100%);  opacity: 1;
-  width: 100vw;
-  height: 100%;
-  position: absolute;
-}
+  @import '../node_modules/sal.js/dist/sal.css';
 
-.paralax-overlay {
-  background: black;
-  opacity: 0.3;
-  width: 100vw;
-  height: 100%;
-  position: absolute;
-}
+  .theme--dark.v-application {
+    background: #202020 !important;
+  }
 
-.header-title {
-  font-size: 80px;
-  font-weight: 300;
-}
+  .home-page-parallax {
+    width: 100vw;
+  }
 
-.v-parallax__image {
-  bottom: -50px !important;
-}
+  .paralax-header-title {
+    flex-direction: column;
+    z-index: 2;
+  }
+
+  .container {
+    margin: 0px !important;
+  }
+
+  .v-parallax__content {
+    padding: 0px !important;
+  }
+
+  .paralax-gradient {
+    background: rgb(32, 32, 32);
+    background: linear-gradient(0deg, rgba(32, 32, 32, 1) 0%, rgba(32, 32, 32, 0) 24%);
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+  }
+
+  .paralax-overlay {
+    background: black;
+    opacity: 0.3;
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+  }
+
+  .header-title {
+    font-size: 80px;
+    font-weight: 300;
+  }
+
+  .v-parallax__image {
+    bottom: -50px !important;
+  }
+
+  .charts {
+    padding: 0px 10em 0px 10em;
+  }
+
+  .v-list-item__title {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+  }
+
+  .side-list a {
+    display: flex;
+    font-size: 16px !important;
+  }
+
+  .side-list .v-icon {
+    max-width: 25px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit !important;
+  }
+
+  .v-expansion-panel .v-icon {
+    margin-right: 1em;
+  }
+
+  .v-expansion-panel-header {
+    padding: 0px !important;
+    font-size: 16px !important;
+  }
+
+  .v-expansion-panel-header__icon .v-icon {
+    margin-right: 0px;
+    margin-left: 10px;
+  }
+
+  .v-expansion-panel::before {
+    box-shadow: none !important;
+  }
+
+  .avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .avatar-list .v-list-item {
+    padding: 0px !important;
+  }
+
+  .v-expansion-panel-content__wrap {
+    padding: 0 10px 16px !important;
+  }
 
 </style>
