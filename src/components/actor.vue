@@ -19,7 +19,7 @@
           data-sal-delay="100" data-sal-duration="1000" data-sal-easing="ease-out-bounce"></highcharts>
       </div>
     </div>
-    <div v-if="this.$route.params.name == 'all'">
+    <div v-if="this.$route.params.name === 'all'">
       <div class="chart-row mt-10">
         <div class="mb-5">In the graph bellow we have visualised all actors movie revenue.</div>
         <highcharts class="chart" :options="scatteredChart" style="height: 100%; width: 70%;" data-sal="slide-up"
@@ -30,222 +30,221 @@
 </template>
 
 <script>
-  import db from './firebaseInit'
-  import sal from 'sal.js';
-  import bio from './biography';
+import db from './firebaseInit'
+import sal from 'sal.js'
+import bio from './biography'
 
-
-  export default {
-    components: {
-      bio,
-    },
-    data() {
-      return {
-        name: this.$route.params.name,
-        chartData: [],
-        scatteredChart: {
-          chart: {
-            type: 'packedbubble',
-            height: '100%'
-          },
-          title: {
-            text: 'Movie revenue by actors'
-          },
-          tooltip: {
-            formatter: function () {
-              return 'Movie: <b>' + this.point.movie + '<b><br> Actor: ' + this.point.name + '<br> Revenue: $' + this
-                .point.y + '<br> IMDb rating: ' + this.point.rating;
-            }
-          },
-          plotOptions: {
-            packedbubble: {
-              minSize: '30%',
-              maxSize: '120%',
-              layoutAlgorithm: {
-                splitSeries: false,
-                gravitationalConstant: 0.02
+export default {
+  components: {
+    bio
+  },
+  data () {
+    return {
+      name: this.$route.params.name,
+      chartData: [],
+      scatteredChart: {
+        chart: {
+          type: 'packedbubble',
+          height: '100%'
+        },
+        title: {
+          text: 'Movie revenue by actors'
+        },
+        tooltip: {
+          formatter: function () {
+            return 'Movie: <b>' + this.point.movie + '<b><br> Actor: ' + this.point.name + '<br> Revenue: $' + this
+              .point.y + '<br> IMDb rating: ' + this.point.rating
+          }
+        },
+        plotOptions: {
+          packedbubble: {
+            minSize: '30%',
+            maxSize: '120%',
+            layoutAlgorithm: {
+              splitSeries: false,
+              gravitationalConstant: 0.02
+            },
+            dataLabels: {
+              enabled: true,
+              format: '{point.name}',
+              filter: {
+                property: 'y',
+                operator: '>',
+                value: 250
               },
-              dataLabels: {
-                enabled: true,
-                format: '{point.name}',
-                filter: {
-                  property: 'y',
-                  operator: '>',
-                  value: 250
-                },
-                style: {
-                  color: 'black',
-                  textOutline: 'none',
-                  fontWeight: 'normal'
-                }
+              style: {
+                color: 'black',
+                textOutline: 'none',
+                fontWeight: 'normal'
               }
             }
-          },
-          series: [{
-            name: 'Leonardo Di caprio',
-            data: []
-          }, {
-            name: 'Jack Nicholson',
-            data: []
-          }, {
-            name: 'Jack Nicholson',
-            data: []
-          }, {
-            name: 'Christian Bale',
-            data: []
-          }, {
-            name: 'Matthew Mcconaughey',
-            data: []
-          }]
-        },
-        chartOptions1: {
-          chart: {
-            type: 'line'
-          },
-          title: {
-            text: 'Relationship between box office revenue and IMDb rating'
-          },
-          tooltip: {
-            formatter: function () {
-              return 'Movie: <b>' + this.point.movie + '<b><br> Revenue: $' + this.point.y +
-                '<br> IMDb rating: ' + this.point.myData;
-            }
-          },
-          xAxis: {
-            type: 'linear',
-            allowDecimals: true,
-            categories: [],
-            title: {
-              text: 'IMDb rating'
-            },
-          },
-          yAxis: {
-            title: {
-              text: 'Revenue in dollars'
-            },
-            labels: {
-              formatter: function () {
-                return this.value / 1000000 + 'M';
-              }
-            }
-          },
-          plotOptions: {
-            area: {
-              marker: {
-                enabled: false,
-                symbol: 'circle',
-                radius: 2,
-                states: {
-                  hover: {
-                    enabled: true
-                  }
-                }
-              }
-            }
-          },
-          series: {
-            drilldown: false,
-            name: 'Revenue',
-            data: [],
-            movie: [],
           }
         },
-        chartOptions: {
-          legend: {
-            enabled: false
-          },
-          tooltip: {
-            formatter: function () {
-              return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.myData +
-                '<br> IMDb rating: ' + this.point.y;
-            }
-          },
-          chart: {
-            type: 'column'
-          },
-          title: {
-            text: 'Top rated movies'
-          },
-          xAxis: {
-            categories: [],
-            crosshair: true
-          },
-          series: {
-            drilldown: false,
-            name: 'revenue',
-            data: [],
-          }
-        },
-      }
-    },
-    mounted() {
-      db.collection('actors').get().then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.chartData.push(doc.data())
-        })
-        this.chartData.forEach(el => {
-          if (el.actor === this.$route.params.name) {
-            this.chartOptions.series.data.push({
-              y: el.rating,
-              myData: el.revenue,
-              movie: el.name
-            })
-            this.chartOptions.xAxis.categories.push(el.name)
-            this.chartOptions1.series.data.push({
-              y: el.revenue,
-              myData: el.rating,
-              movie: el.name
-            })
-            this.chartOptions1.xAxis.categories.push(el.rating)
-          } else if (this.$route.params.name === 'all') {
-            if (el.actor == 'dicaprio') {
-              this.scatteredChart.series[0].data.push({
-                name: 'DiCaprio',
-                value: el.revenue,
-                rating: el.rating,
-                movie: el.name,
-              })
-            } else if (el.actor == 'nicholson') {
-              this.scatteredChart.series[1].data.push({
-                name: 'Nicholson',
-                value: el.revenue,
-                rating: el.rating,
-                movie: el.name,
-              })
-            } else if (el.actor == 'deniro') {
-              this.scatteredChart.series[2].data.push({
-                name: 'De Niro',
-                value: el.revenue,
-                rating: el.rating,
-                movie: el.name,
-              })
-            } else if (el.actor == 'bale') {
-              this.scatteredChart.series[3].data.push({
-                name: 'Bale',
-                value: el.revenue,
-                rating: el.rating,
-                movie: el.name,
-              })
-            } else if (el.actor == 'matthew') {
-              this.scatteredChart.series[4].data.push({
-                name: 'Mcconaughey',
-                value: el.revenue,
-                rating: el.rating,
-                movie: el.name,
-              })
-            }
-          }
-        })
-      })
-      sal();
-    },
-    methods: {
-      getImgUrl(pic) {
-        console.log(pic)
-        return pic ? require('../assets/' + pic + '.jpg') : '';
+        series: [{
+          name: 'Leonardo Di caprio',
+          data: []
+        }, {
+          name: 'Jack Nicholson',
+          data: []
+        }, {
+          name: 'Jack Nicholson',
+          data: []
+        }, {
+          name: 'Christian Bale',
+          data: []
+        }, {
+          name: 'Matthew Mcconaughey',
+          data: []
+        }]
       },
-    },
+      chartOptions1: {
+        chart: {
+          type: 'line'
+        },
+        title: {
+          text: 'Relationship between box office revenue and IMDb rating'
+        },
+        tooltip: {
+          formatter: function () {
+            return 'Movie: <b>' + this.point.movie + '<b><br> Revenue: $' + this.point.y +
+                '<br> IMDb rating: ' + this.point.myData
+          }
+        },
+        xAxis: {
+          type: 'linear',
+          allowDecimals: true,
+          categories: [],
+          title: {
+            text: 'IMDb rating'
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'Revenue in dollars'
+          },
+          labels: {
+            formatter: function () {
+              return this.value / 1000000 + 'M'
+            }
+          }
+        },
+        plotOptions: {
+          area: {
+            marker: {
+              enabled: false,
+              symbol: 'circle',
+              radius: 2,
+              states: {
+                hover: {
+                  enabled: true
+                }
+              }
+            }
+          }
+        },
+        series: {
+          drilldown: false,
+          name: 'Revenue',
+          data: [],
+          movie: []
+        }
+      },
+      chartOptions: {
+        legend: {
+          enabled: false
+        },
+        tooltip: {
+          formatter: function () {
+            return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.myData +
+                '<br> IMDb rating: ' + this.point.y
+          }
+        },
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Top rated movies'
+        },
+        xAxis: {
+          categories: [],
+          crosshair: true
+        },
+        series: {
+          drilldown: false,
+          name: 'revenue',
+          data: []
+        }
+      }
+    }
+  },
+  mounted () {
+    db.collection('actors').get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        this.chartData.push(doc.data())
+      })
+      this.chartData.forEach(el => {
+        if (el.actor === this.$route.params.name) {
+          this.chartOptions.series.data.push({
+            y: el.rating,
+            myData: el.revenue,
+            movie: el.name
+          })
+          this.chartOptions.xAxis.categories.push(el.name)
+          this.chartOptions1.series.data.push({
+            y: el.revenue,
+            myData: el.rating,
+            movie: el.name
+          })
+          this.chartOptions1.xAxis.categories.push(el.rating)
+        } else if (this.$route.params.name === 'all') {
+          if (el.actor === 'dicaprio') {
+            this.scatteredChart.series[0].data.push({
+              name: 'DiCaprio',
+              value: el.revenue,
+              rating: el.rating,
+              movie: el.name
+            })
+          } else if (el.actor === 'nicholson') {
+            this.scatteredChart.series[1].data.push({
+              name: 'Nicholson',
+              value: el.revenue,
+              rating: el.rating,
+              movie: el.name
+            })
+          } else if (el.actor === 'deniro') {
+            this.scatteredChart.series[2].data.push({
+              name: 'De Niro',
+              value: el.revenue,
+              rating: el.rating,
+              movie: el.name
+            })
+          } else if (el.actor === 'bale') {
+            this.scatteredChart.series[3].data.push({
+              name: 'Bale',
+              value: el.revenue,
+              rating: el.rating,
+              movie: el.name
+            })
+          } else if (el.actor === 'matthew') {
+            this.scatteredChart.series[4].data.push({
+              name: 'Mcconaughey',
+              value: el.revenue,
+              rating: el.rating,
+              movie: el.name
+            })
+          }
+        }
+      })
+    })
+    sal()
+  },
+  methods: {
+    getImgUrl (pic) {
+      console.log(pic)
+      return pic ? require('../assets/' + pic + '.jpg') : ''
+    }
   }
+}
 
 </script>
 

@@ -24,7 +24,7 @@ Here are the 10 highest-grossing movies of all-time:</p>
 
 <script>
 import db from './firebaseInit'
-import sal from 'sal.js';
+import sal from 'sal.js'
 
 export default {
   data () {
@@ -53,19 +53,20 @@ export default {
     }
   },
   created () {
-    db.collection('allTimeTopRated').get().then
-    (querySnapshot => {
-      querySnapshot.forEach(doc => {
-        this.chartData.push(doc.data())
-      })
-      this.chartData.forEach(el => {
-        this.chartOptions.series.data.push(el.revenue)
-        this.chartOptions.xAxis.categories.push(el.name)
-      })
-    })
+    db.collection('allTimeTopRated').get()
+      .then(
+        querySnapshot => {
+          querySnapshot.forEach(doc => {
+            this.chartData.push(doc.data())
+          })
+          this.chartData.forEach(el => {
+            this.chartOptions.series.data.push(el.revenue)
+            this.chartOptions.xAxis.categories.push(el.name)
+          })
+        })
   },
-  mounted() {
-    sal();
+  mounted () {
+    sal()
   }
 }
 </script>

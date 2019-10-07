@@ -1,6 +1,6 @@
 <template>
   <div class="biography">
-    <div v-if="this.name == 'dicaprio'">
+    <div v-if="this.name === 'dicaprio'">
       <h1 class="bio-header my-10">Leonardo DiCaprio</h1>
       <p>Leonardo Wilhelm DiCaprio is a renowned American actor and producer known for his good looks and exceptional
         acting skills. Marking his entry through television in 1991 with ‘Santa Barbara’, he went on to become an
@@ -18,7 +18,7 @@
         evident from the donations he makes towards wildlife and environment conservational groups.
       </p>
     </div>
-    <div v-if="this.name == 'nicholson'">
+    <div v-if="this.name === 'nicholson'">
       <h1 class="bio-header my-10">Jack Nicholson</h1>
       <p>Jack Nicholson is a legendary American actor who has been one of the biggest stalwarts of Hollywood for close
         to 6 decades and within that period he has delivered some of the most iconic performances that the world of
@@ -32,7 +32,7 @@
         equal the record for most wins. Jack Nicholson is without doubt among the greatest that Hollywood has ever had.
       </p>
     </div>
-    <div v-if="this.name == 'deniro'">
+    <div v-if="this.name === 'deniro'">
       <h1 class="bio-header my-10">Robert De Niro</h1>
       <p>
         Artistically endowed with exceptional acting talent and impressive personality, Robert De Niro is a stellar
@@ -50,7 +50,7 @@
         movies, ‘A Bronx Tale’ and ‘The Good Shepherd’. To know more about his life and profile, read on.
       </p>
     </div>
-    <div v-if="this.name == 'bale'">
+    <div v-if="this.name === 'bale'">
       <h1 class="bio-header my-10">Christian Bale</h1>
       <p>A stand-out actor of his generation, Christian Bale is loaded with talent and artistic skills. It is his
         ability to get into the skin of the character that helps him forward a powerful performance which leaves the
@@ -65,7 +65,7 @@
         read on.
       </p>
     </div>
-    <div v-if="this.name == 'matthew'">
+    <div v-if="this.name === 'matthew'">
       <h1 class="bio-header my-10">Matthew Mcconaughey</h1>
       <p>Matthew McConaughey is one of the leading actors in Hollywood. He first tasted stardom with the critically
         successful film ‘Dazed and Confused.’ Born into a middle class family, this charming Texan, unlike his brothers,
@@ -80,7 +80,7 @@
         children.
       </p>
     </div>
-    <div v-if="this.name == 'nolan'">
+    <div v-if="this.name === 'nolan'">
       <h1 class="bio-header my-10">Christopher Nolan</h1>
       <p>Christopher Edward Nolan is an English film director, considered one of the most acclaimed and successful
         filmmakers of the 21st century. His films have earned a total of 26 nominations for the Oscars, with seven wins.
@@ -95,7 +95,7 @@
         Nolan as one of the 100 most influential people in the world.
       </p>
     </div>
-    <div v-if="this.name == 'fincher'">
+    <div v-if="this.name === 'fincher'">
       <h1 class="bio-header my-10">David Fincher</h1>
       <p>David Andrew Leo Fincher (born August 28, 1962) is an American film director, film producer, television
         director, television producer, and music video director. He was nominated for the Academy Award for Best
@@ -110,7 +110,7 @@
         His films Zodiac and The Social Network are ranked in BBC's 100 Greatest Films of the 21st Century.
       </p>
     </div>
-    <div v-if="this.name == 'scorsese'">
+    <div v-if="this.name === 'scorsese'">
       <h1 class="bio-header my-10">Martin Scorsese</h1>
       <p>Martin Scorsese is an acclaimed American director and writer whose films like ‘Mean Streets’ and ‘The Wolf of
         Wall Street’ have shaped the history of American cinema. The legendary director is known for his steely, often
@@ -124,7 +124,7 @@
         Award, Emmys, Golden Globes, BAFTAs and DGA Awards.
       </p>
     </div>
-    <div v-if="this.name == 'tarantino'">
+    <div v-if="this.name === 'tarantino'">
       <h1 class="bio-header my-10">Quentin Tarantino</h1>
       <p>Either an individual grasps Quentin Tarantino’s films, or doesn’t. Those who do understand his movies, relate
         to his craft of making a daring fusion of thrillers, neo-noir, and non-linear films. Those who do not apprehend
@@ -139,7 +139,7 @@
         films are pregnant with dissimilar traditions, gangster violence, Blaxploitation themes and accented language.
       </p>
     </div>
-    <div v-if="this.name == 'kubrick'">
+    <div v-if="this.name === 'kubrick'">
       <h1 class="bio-header my-10">Stanley Kubrick</h1>
       <p>Stanley Kubrick, considered to be one of the greatest filmmakers in American history, was a director cum
         producer known for his innovation in cinematography. A highly creative personality, he worked in a number of
@@ -159,12 +159,12 @@
 </template>
 
 <script>
-  export default {
-    props: ['name'],
-    data() {
-      return {}
-    }
+export default {
+  props: ['name'],
+  data () {
+    return {}
   }
+}
 
 </script>
 

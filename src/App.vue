@@ -36,7 +36,7 @@
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
                   <v-list class="avatar-list">
-                    <v-list-item v-for="actor in actors" :key="actor.name" @click="" class="my-3">
+                    <v-list-item v-for="actor in actors" :key="actor.name" class="my-3">
                       <router-link :to="{ name: 'actor', params: { name: actor.params }}">
                         <div class="avatar-div mr-2">
                           <div class="avatar" :style="{ backgroundImage: `url(${getImgUrl(actor.picture)})` }"></div>
@@ -60,7 +60,7 @@
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
                   <v-list>
-                    <v-list-item v-for="director in directors" :key="director.name" @click="" class="my-3">
+                    <v-list-item v-for="director in directors" :key="director.name" class="my-3">
                       <router-link :to="{ name: 'director', params: { name: director.params }}">
                         <div class="avatar-div mr-2">
                           <div class="avatar" :style="{ backgroundImage: `url(${getImgUrl(director.picture)})` }"></div>
@@ -103,100 +103,100 @@
     <div class="charts mt-10">
       <router-view :key="$route.fullPath"></router-view>
     </div>
+    <my-footer></my-footer>
   </v-app>
 </template>
 
 <script>
-  import allTime from './components/allTime.vue'
-  import db from './components/firebaseInit'
-  import sal from 'sal.js';
+import sal from 'sal.js'
+import myFooter from './components/footer.vue'
 
-  export default {
-    components: {
-      allTime: allTime,
+export default {
+  components: {
+    myFooter,
+  },
+  props: {
+    source: String
+  },
+  data: () => ({
+    drawer: false,
+    actors: [{
+      name: 'Leonardo DiCaprio',
+      picture: 'dicaprio.jpg',
+      params: 'dicaprio'
     },
-    props: {
-      source: String
+    {
+      name: 'Jack Nicholson',
+      picture: 'nicholson.jpg',
+      params: 'nicholson'
     },
-    data: () => ({
-      drawer: false,
-      actors: [{
-          name: 'Leonardo DiCaprio',
-          picture: 'dicaprio.jpg',
-          params: 'dicaprio'
-        },
-        {
-          name: 'Jack Nicholson',
-          picture: 'nicholson.jpg',
-          params: 'nicholson'
-        },
-        {
-          name: 'Robert De Niro',
-          picture: 'deniro.jpg',
-          params: 'deniro'
-        },
-        {
-          name: 'Christian Bale',
-          picture: 'bale.jpg',
-          params: 'bale'
-        },
-        {
-          name: 'Matthew Mcconaughey',
-          picture: 'matthew.jpg',
-          params: 'matthew'
-        },
-        {
-          name: 'All together',
-          picture: null,
-          params: 'all'
-        }
-      ],
-      directors: [{
-          name: 'Christopher Nolan',
-          picture: 'nolan.jpg',
-          params: 'nolan'
-        },
-        {
-          name: 'David Fincher',
-          picture: 'fincher.jpg',
-          params: 'fincher'
-        },
-        {
-          name: 'Martin Scorsese',
-          picture: 'scorsese.jpg',
-          params: 'scorsese'
-        },
-        {
-          name: 'Quentin Tarantino',
-          picture: 'tarantino.jpg',
-          params: 'tarantino'
-        },
-        {
-          name: 'Stanley Kubrick',
-          picture: 'kubrick.jpg',
-          params: 'kubrick'
-        },
-        {
-          name: 'All together',
-          picture: null,
-          params: 'all'
-        }
-      ],
-      years: [2019, 2018, 2017, 2016, 2015]
-
-    }),
-    methods: {
-      getImgUrl(pic) {
-        return pic ? require('./assets/' + pic) : '';
-      },
+    {
+      name: 'Robert De Niro',
+      picture: 'deniro.jpg',
+      params: 'deniro'
     },
-    created() {
-      this.$vuetify.theme.dark = true
+    {
+      name: 'Christian Bale',
+      picture: 'bale.jpg',
+      params: 'bale'
     },
-    mounted() {
-      sal();
+    {
+      name: 'Matthew Mcconaughey',
+      picture: 'matthew.jpg',
+      params: 'matthew'
+    },
+    {
+      name: 'All together',
+      picture: null,
+      params: 'all'
     }
+    ],
+    directors: [{
+      name: 'Christopher Nolan',
+      picture: 'nolan.jpg',
+      params: 'nolan'
+    },
+    {
+      name: 'David Fincher',
+      picture: 'fincher.jpg',
+      params: 'fincher'
+    },
+    {
+      name: 'Martin Scorsese',
+      picture: 'scorsese.jpg',
+      params: 'scorsese'
+    },
+    {
+      name: 'Quentin Tarantino',
+      picture: 'tarantino.jpg',
+      params: 'tarantino'
+    },
+    {
+      name: 'Stanley Kubrick',
+      picture: 'kubrick.jpg',
+      params: 'kubrick'
+    },
+    {
+      name: 'All together',
+      picture: null,
+      params: 'all'
+    }
+    ],
+    years: [2019, 2018, 2017, 2016, 2015]
+
+  }),
+  methods: {
+    getImgUrl (pic) {
+      return pic ? require('./assets/' + pic) : ''
+    }
+  },
+  created () {
+    this.$vuetify.theme.dark = true
+  },
+  mounted () {
+    sal()
   }
+}
 
 </script>
 

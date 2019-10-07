@@ -36,6 +36,6 @@ export default new Router({
       path: '/director/:name',
       name: 'director',
       component: director
-    },
+    }
   ]
 })

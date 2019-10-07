@@ -33,273 +33,272 @@
 </template>
 
 <script>
-  import db from './firebaseInit'
-  import sal from 'sal.js';
+import db from './firebaseInit'
+import sal from 'sal.js'
 
-
-  export default {
-    data() {
-      return {
-        chartData: [],
-        scatterChart: {
-          chart: {
-            type: 'packedbubble',
-            height: '100%'
-          },
-          title: {
-            text: 'Movie revenue by year'
-          },
-          tooltip: {
-            useHTML: true,
-            pointFormat: 'Movie: <b>{point.name}</b><br>Revenue: <b>${point.value}</b>'
-          },
-          plotOptions: {
-            packedbubble: {
-              minSize: '30%',
-              maxSize: '130%',
-              layoutAlgorithm: {
-                splitSeries: false,
-                gravitationalConstant: 0.02
+export default {
+  data () {
+    return {
+      chartData: [],
+      scatterChart: {
+        chart: {
+          type: 'packedbubble',
+          height: '100%'
+        },
+        title: {
+          text: 'Movie revenue by year'
+        },
+        tooltip: {
+          useHTML: true,
+          pointFormat: 'Movie: <b>' + this.point.name + '</b><br>Revenue: <b>' + this.point.value + '</b>'
+        },
+        plotOptions: {
+          packedbubble: {
+            minSize: '30%',
+            maxSize: '130%',
+            layoutAlgorithm: {
+              splitSeries: false,
+              gravitationalConstant: 0.02
+            },
+            dataLabels: {
+              enabled: true,
+              format: '{point.name}',
+              filter: {
+                property: 'y',
+                operator: '>',
+                value: 250
               },
-              dataLabels: {
-                enabled: true,
-                format: '{point.name}',
-                filter: {
-                  property: 'y',
-                  operator: '>',
-                  value: 250
-                },
-                style: {
-                  color: 'black',
-                  textOutline: 'none',
-                  fontWeight: 'normal'
-                }
+              style: {
+                color: 'black',
+                textOutline: 'none',
+                fontWeight: 'normal'
               }
             }
-          },
-          series: [{
-            name: '2019',
-            data: []
-          }, {
-            name: '2018',
-            data: []
-          }, {
-            name: '2017',
-            data: []
-          }, {
-            name: '2016',
-            data: []
-          }, {
-            name: '2015',
-            data: []
-          }]
-        },
-        chartOptions2019: {
-          legend: {
-            enabled: false
-          },
-          tooltip: {
-            formatter: function () {
-              console.log(this.point)
-              return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y;
-            }
-          },
-          yAxis: {
-            title: {
-              text: 'Revenue in dollars'
-            },
-          },
-          chart: {
-            type: 'column'
-          },
-          title: {
-            text: 'Sin chart'
-          },
-          xAxis: {
-            categories: [],
-            crosshair: true
-          },
-          series: {
-            drilldown: false,
-            name: 'revenue',
-            data: []
           }
         },
-        chartOptions2018: {
-          legend: {
-            enabled: false
-          },
-          tooltip: {
-            formatter: function () {
-              console.log(this.point)
-              return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y;
-            }
-          },
-          yAxis: {
-            title: {
-              text: 'Revenue in dollars'
-            },
-          },
-          chart: {
-            type: 'column'
-          },
-          title: {
-            text: 'Sin chart'
-          },
-          xAxis: {
-            categories: [],
-            crosshair: true
-          },
-          series: {
-            drilldown: false,
-            name: 'revenue',
-            data: []
+        series: [{
+          name: '2019',
+          data: []
+        }, {
+          name: '2018',
+          data: []
+        }, {
+          name: '2017',
+          data: []
+        }, {
+          name: '2016',
+          data: []
+        }, {
+          name: '2015',
+          data: []
+        }]
+      },
+      chartOptions2019: {
+        legend: {
+          enabled: false
+        },
+        tooltip: {
+          formatter: function () {
+            console.log(this.point)
+            return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
           }
         },
-        chartOptions2017: {
-          legend: {
-            enabled: false
-          },
-          tooltip: {
-            formatter: function () {
-              console.log(this.point)
-              return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y;
-            }
-          },
-          yAxis: {
-            title: {
-              text: 'Revenue in dollars'
-            },
-          },
-          chart: {
-            type: 'column'
-          },
+        yAxis: {
           title: {
-            text: 'Sin chart'
-          },
-          xAxis: {
-            categories: [],
-            crosshair: true
-          },
-          series: {
-            drilldown: false,
-            name: 'revenue',
-            data: []
+            text: 'Revenue in dollars'
           }
         },
-        chartOptions2016: {
-          legend: {
-            enabled: false
-          },
-          tooltip: {
-            formatter: function () {
-              console.log(this.point)
-              return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y;
-            }
-          },
-          yAxis: {
-            title: {
-              text: 'Revenue in dollars'
-            },
-          },
-          chart: {
-            type: 'column'
-          },
-          title: {
-            text: 'Sin chart'
-          },
-          xAxis: {
-            categories: [],
-            crosshair: true
-          },
-          series: {
-            drilldown: false,
-            name: 'revenue',
-            data: []
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Sin chart'
+        },
+        xAxis: {
+          categories: [],
+          crosshair: true
+        },
+        series: {
+          drilldown: false,
+          name: 'revenue',
+          data: []
+        }
+      },
+      chartOptions2018: {
+        legend: {
+          enabled: false
+        },
+        tooltip: {
+          formatter: function () {
+            console.log(this.point)
+            return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
           }
         },
-        chartOptions2015: {
-          legend: {
-            enabled: false
-          },
-          tooltip: {
-            formatter: function () {
-              console.log(this.point)
-              return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y;
-            }
-          },
-          yAxis: {
-            title: {
-              text: 'Revenue in dollars'
-            },
-          },
-          chart: {
-            type: 'column'
-          },
+        yAxis: {
           title: {
-            text: 'Sin chart'
-          },
-          xAxis: {
-            categories: [],
-            crosshair: true
-          },
-          series: {
-            drilldown: false,
-            name: 'revenue',
-            data: []
+            text: 'Revenue in dollars'
           }
+        },
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Sin chart'
+        },
+        xAxis: {
+          categories: [],
+          crosshair: true
+        },
+        series: {
+          drilldown: false,
+          name: 'revenue',
+          data: []
+        }
+      },
+      chartOptions2017: {
+        legend: {
+          enabled: false
+        },
+        tooltip: {
+          formatter: function () {
+            console.log(this.point)
+            return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'Revenue in dollars'
+          }
+        },
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Sin chart'
+        },
+        xAxis: {
+          categories: [],
+          crosshair: true
+        },
+        series: {
+          drilldown: false,
+          name: 'revenue',
+          data: []
+        }
+      },
+      chartOptions2016: {
+        legend: {
+          enabled: false
+        },
+        tooltip: {
+          formatter: function () {
+            console.log(this.point)
+            return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'Revenue in dollars'
+          }
+        },
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Sin chart'
+        },
+        xAxis: {
+          categories: [],
+          crosshair: true
+        },
+        series: {
+          drilldown: false,
+          name: 'revenue',
+          data: []
+        }
+      },
+      chartOptions2015: {
+        legend: {
+          enabled: false
+        },
+        tooltip: {
+          formatter: function () {
+            console.log(this.point)
+            return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'Revenue in dollars'
+          }
+        },
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Sin chart'
+        },
+        xAxis: {
+          categories: [],
+          crosshair: true
+        },
+        series: {
+          drilldown: false,
+          name: 'revenue',
+          data: []
         }
       }
-    },
-    created() {
-      db.collection('years').get().then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.chartData.push(doc.data())
-        })
-        this.chartData.forEach(el => {
-          if (el.year === 2019) {
-            this.chartOptions2019.series.data.push(el.revenue)
-            this.chartOptions2019.xAxis.categories.push(el.name)
-            this.scatterChart.series[0].data.push({
-              name: el.name,
-              value: el.revenue
-            })
-          } else if (el.year === 2018) {
-            this.chartOptions2018.series.data.push(el.revenue)
-            this.chartOptions2018.xAxis.categories.push(el.name)
-            this.scatterChart.series[1].data.push({
-              name: el.name,
-              value: el.revenue
-            })
-          } else if (el.year === 2017) {
-            this.chartOptions2017.series.data.push(el.revenue)
-            this.chartOptions2017.xAxis.categories.push(el.name)
-            this.scatterChart.series[2].data.push({
-              name: el.name,
-              value: el.revenue
-            })
-          } else if (el.year === 2016) {
-            this.chartOptions2016.series.data.push(el.revenue)
-            this.chartOptions2016.xAxis.categories.push(el.name)
-            this.scatterChart.series[3].data.push({
-              name: el.name,
-              value: el.revenue
-            })
-          } else if (el.year === 2015) {
-            this.chartOptions2015.series.data.push(el.revenue)
-            this.chartOptions2015.xAxis.categories.push(el.name)
-            this.scatterChart.series[4].data.push({
-              name: el.name,
-              value: el.revenue
-            })
-          }
-        })
-      })
-    },
-    mounted() {
-      sal();
     }
+  },
+  created () {
+    db.collection('years').get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        this.chartData.push(doc.data())
+      })
+      this.chartData.forEach(el => {
+        if (el.year === 2019) {
+          this.chartOptions2019.series.data.push(el.revenue)
+          this.chartOptions2019.xAxis.categories.push(el.name)
+          this.scatterChart.series[0].data.push({
+            name: el.name,
+            value: el.revenue
+          })
+        } else if (el.year === 2018) {
+          this.chartOptions2018.series.data.push(el.revenue)
+          this.chartOptions2018.xAxis.categories.push(el.name)
+          this.scatterChart.series[1].data.push({
+            name: el.name,
+            value: el.revenue
+          })
+        } else if (el.year === 2017) {
+          this.chartOptions2017.series.data.push(el.revenue)
+          this.chartOptions2017.xAxis.categories.push(el.name)
+          this.scatterChart.series[2].data.push({
+            name: el.name,
+            value: el.revenue
+          })
+        } else if (el.year === 2016) {
+          this.chartOptions2016.series.data.push(el.revenue)
+          this.chartOptions2016.xAxis.categories.push(el.name)
+          this.scatterChart.series[3].data.push({
+            name: el.name,
+            value: el.revenue
+          })
+        } else if (el.year === 2015) {
+          this.chartOptions2015.series.data.push(el.revenue)
+          this.chartOptions2015.xAxis.categories.push(el.name)
+          this.scatterChart.series[4].data.push({
+            name: el.name,
+            value: el.revenue
+          })
+        }
+      })
+    })
+  },
+  mounted () {
+    sal()
   }
+}
 
 </script>
 

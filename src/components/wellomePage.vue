@@ -5,9 +5,9 @@
          data-sal-duration="1000"
          data-sal-easing="ease-out-bounce">
         Films generate income from several revenue streams, including theatrical exhibition,
-         home video, television broadcast rights, and merchandising. However, theatrical box office 
-         earnings are the primary metric for trade publications in assessing the success of a film, 
-         mostly because of the availability of the data compared to sales figures for home video and 
+         home video, television broadcast rights, and merchandising. However, theatrical box office
+         earnings are the primary metric for trade publications in assessing the success of a film,
+         mostly because of the availability of the data compared to sales figures for home video and
          broadcast rights, but also because of historical practice.
       </p>
          <div class="movie-header bttf"
@@ -21,10 +21,10 @@
             data-sal-delay="100"
             data-sal-duration="1000"
             data-sal-easing="ease-out-bounce">
-         Included on the list are charts of 
-         the top box office earners, a chart 
-         of high-grossing films by calendar year, a timeline showing the transition of the highest-grossing 
-         film record, and a chart of the highest-grossing film franchises and series. All charts are ranked 
+         Included on the list are charts of
+         the top box office earners, a chart
+         of high-grossing films by calendar year, a timeline showing the transition of the highest-grossing
+         film record, and a chart of the highest-grossing film franchises and series. All charts are ranked
          by international theatrical box office performance where possible, excluding income derived from home
           video, broadcasting rights, and merchandise.
           </p>
@@ -39,13 +39,13 @@
             data-sal-delay="100"
             data-sal-duration="1000"
             data-sal-easing="ease-out-bounce">
-          Traditionally, war films, musicals, and historical dramas have been the most popular genres, 
-          but franchise films have been among the best performers in the 21st century. There is strong 
-          interest in the superhero genre, with nine films in the Marvel Cinematic Universe featuring 
+          Traditionally, war films, musicals, and historical dramas have been the most popular genres,
+          but franchise films have been among the best performers in the 21st century. There is strong
+          interest in the superhero genre, with nine films in the Marvel Cinematic Universe featuring
           among the nominal top-earners. The most successful superhero film, Avengers: Endgame, is also
            the highest-grossing film overall on the nominal earnings chart, and there are four films in
             total based on the Avengers comic books charting in the top ten. Other Marvel Comics adaptations
-             have also had success with the Spider-Man and X-Men properties, while films based on Batman and 
+             have also had success with the Spider-Man and X-Men properties, while films based on Batman and
              Superman from DC Comics have generally performed well.
          </p>
             <div class="movie-header my-10 lotr"
@@ -60,15 +60,15 @@
                data-sal-duration="1000"
                data-sal-easing="ease-out-bounce">
              Star Wars is also represented in the
-              nominal earnings chart with four films, while the Harry Potter, Jurassic Park and Pirates of 
-              the Caribbean franchises along with Peter Jackson's Middle-earth series feature prominently. 
-              Avatar, in second place on the nominal chart, is the highest-grossing film that is not a 
-              sequel or an adaptation of a pre-existing property. Animated family films have performed 
-              consistently well, with Disney films enjoying lucrative re-releases prior to the home-video 
-              era. Disney also enjoyed later success with films such as Frozen, Zootopia, and The Lion King 
+              nominal earnings chart with four films, while the Harry Potter, Jurassic Park and Pirates of
+              the Caribbean franchises along with Peter Jackson's Middle-earth series feature prominently.
+              Avatar, in second place on the nominal chart, is the highest-grossing film that is not a
+              sequel or an adaptation of a pre-existing property. Animated family films have performed
+              consistently well, with Disney films enjoying lucrative re-releases prior to the home-video
+              era. Disney also enjoyed later success with films such as Frozen, Zootopia, and The Lion King
               (with its computer-animated remake as the highest-grossing animated film), as well as its Pixar
                brand, of which Incredibles 2, Toy Story 3 and 4, and Finding Dory have been the best performers.
-                Beyond Disney and Pixar animation, the Despicable Me, Shrek, and Ice Age series have met with 
+                Beyond Disney and Pixar animation, the Despicable Me, Shrek, and Ice Age series have met with
                 the most success.
             </p>
             <div class="movie-header my-10 resdogs"
@@ -82,15 +82,15 @@
 </template>
 
 <script>
-import sal from 'sal.js';
+import sal from 'sal.js'
 
 export default {
   data () {
     return {
     }
   },
-  mounted() {
-    sal();
+  mounted () {
+    sal()
   }
 }
 </script>
@@ -103,7 +103,7 @@ export default {
   position: relative;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
 }
 
 .movie-header-gradient {
