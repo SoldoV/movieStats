@@ -1,5 +1,10 @@
 <template>
   <div class="chart-text mt-10">
+    <h1 class="wellcome-header"
+        data-sal="slide-up"
+        data-sal-delay="100"
+        data-sal-duration="1000"
+        data-sal-easing="ease-out-bounce">Data analysis of top-rated and highest-grossing movies</h1>
       <p data-sal="slide-up"
          data-sal-delay="100"
          data-sal-duration="1000"
@@ -28,7 +33,7 @@
          by international theatrical box office performance where possible, excluding income derived from home
           video, broadcasting rights, and merchandise.
           </p>
-          <div class="movie-header my-10 shawshank"
+          <div class="movie-header shawshank"
                data-sal="slide-up"
                data-sal-delay="100"
                data-sal-duration="1000"
@@ -48,7 +53,7 @@
              have also had success with the Spider-Man and X-Men properties, while films based on Batman and
              Superman from DC Comics have generally performed well.
          </p>
-            <div class="movie-header my-10 lotr"
+            <div class="movie-header lotr"
                  data-sal="slide-up"
                  data-sal-delay="100"
                  data-sal-duration="1000"
@@ -71,7 +76,7 @@
                 Beyond Disney and Pixar animation, the Despicable Me, Shrek, and Ice Age series have met with
                 the most success.
             </p>
-            <div class="movie-header my-10 resdogs"
+            <div class="movie-header resdogs"
                  data-sal="slide-up"
                  data-sal-delay="100"
                  data-sal-duration="1000"
@@ -97,7 +102,7 @@ export default {
 <style >
 
 .movie-header {
-  margin: 5em 0 5em 0;
+  margin: 6em 0 6em 0;
   width: 100%;
   height: 500px;
   position: relative;
@@ -129,6 +134,12 @@ export default {
 .bttf {
   background-image: url('../assets/bttf.jpg');
   height: 600px;
+}
+.wellcome-header {
+  text-align: center;
+  margin: 2em 0 2em 0;
+  font-weight: 300;
+  font-size: 50px;
 }
 
 </style>

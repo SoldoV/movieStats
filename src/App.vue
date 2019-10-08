@@ -79,7 +79,7 @@
 
     <v-app-bar app clipped-left color="red" dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-icon class="mx-4">fab fa-youtube</v-icon>
+      <v-icon class="mx-4">local_movies</v-icon>
       <v-toolbar-title class="mr-12 align-center">
         <router-link to="/">
           <span class="title">Movie-Stats</span>
@@ -113,7 +113,7 @@ import myFooter from './components/footer.vue'
 
 export default {
   components: {
-    myFooter,
+    myFooter
   },
   props: {
     source: String

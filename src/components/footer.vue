@@ -79,120 +79,122 @@
 </template>
 
 <script>
-  export default {
+export default {
 
-  }
+}
 
 </script>
 
-<style lang="scss">
-	/*=-footer-=*/
-			footer {
-				color: #fff;
-				background-attachment: fixed;
-				background-color:#111;
-        background-image: url(https://s7.postimg.org/uyf0oioaz/footer-bg.png);
-				background-size: cover;
-				background-position: bottom;
-			}
-			footer p {
-				color: #ccc;				
-			}
-	   footer a {
-				color: #ccc;				
-			}
-			.social-pet li {
-				display: inline-block;
-				margin-right: 10px;
-			}
-			.social-pet li a {
-				height: 35px;
-				width: 35px;
-				border-radius: 50%;
-				text-align: center;
-				display: block;
-				line-height: 35px;
-				background-color: #3a5a95;
-				color: #fff;
-			}
-			.social-pet li:nth-child(2) a {
-				background-color: #57aced;
-			}
-			.social-pet li:nth-child(3) a {
-				background-color: #dd4f43;
-			}
-			.social-pet li:nth-child(4) a {
-				background-color: #6b27b2;
-			}
-			.social-pet li a:hover {
-				background-color: #0141a2;
-			}
-			.social-pet li a:hover i {
-				transform: rotate(360deg);
-				-moz-transform: rotate(360deg);
-				-webkit-transform: rotate(360deg);
-			}
-			.recent-post li {
-				display: block;
-				color: #ccc;
-				margin-bottom: 25px;
-			}
-			.recent-post li label {
-				float: left;
-				border: 2px solid #ccc;
-				padding: 1px 7px;
-				text-align: center;
-			}
-			.recent-post li label span {
-				color: #fff;
-			}
-			footer .input-group-addon {
-				background-color: #0141a2;
-				padding: 10px;
-			}
-      .input-group {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-items: center;
-        align-items: center;
-      }
-      .f-address {
-        display: flex;
-        flex-direction: row;
-      }
-			.f-address li {
-				display: inline-block;
-			}
-			.f-address li i {
-				color: #2995de;
-				font-size: 18px;
-			}
-			.f-address li a {
-				color: #ccc;
-			}
-      .footer-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center
-      }
-      .about-us {
-        text-align: center;
-      }
-      .v-application ul, .v-application ol {
-        padding: 0px !important;
-      }
-      .social-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center
-      }
-			/*=-Copyright-=*/
-			.copyright {
-				background-color: #000;
-				padding: 12px 0;
-        font-size:14px;
-			}
+<style lang="scss" scoped>
+footer {
+color: #fff;
+background-attachment: fixed;
+background-color:#111;
+background-image: url(https://s7.postimg.org/uyf0oioaz/footer-bg.png);
+background-size: cover;
+background-position: bottom;
+}
+footer p {
+color: #ccc;
+}
+footer a {
+color: #ccc;
+}
+.form-control {
+height: 44px;
+padding: 0px 5px 0 5px;
+}
+.social-pet li {
+display: inline-block;
+margin-right: 10px;
+}
+.social-pet li a {
+height: 35px;
+width: 35px;
+border-radius: 50%;
+text-align: center;
+display: block;
+line-height: 35px;
+background-color: #3a5a95;
+color: #fff;
+}
+.social-pet li:nth-child(2) a {
+background-color: #57aced;
+}
+.social-pet li:nth-child(3) a {
+background-color: #dd4f43;
+}
+.social-pet li:nth-child(4) a {
+background-color: #6b27b2;
+}
+.social-pet li a:hover {
+background-color: #0141a2;
+}
+.social-pet li a:hover i {
+transform: rotate(360deg);
+-moz-transform: rotate(360deg);
+-webkit-transform: rotate(360deg);
+}
+.recent-post li {
+display: block;
+color: #ccc;
+margin-bottom: 25px;
+}
+.recent-post li label {
+float: left;
+border: 2px solid #ccc;
+padding: 1px 7px;
+text-align: center;
+}
+.recent-post li label span {
+color: #fff;
+}
+footer .input-group-addon {
+background-color: #0141a2;
+padding: 10px;
+}
+.input-group {
+width: 100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+}
+.f-address {
+display: flex;
+flex-direction: row;
+}
+.f-address li {
+display: inline-block;
+}
+.f-address li i {
+color: #2995de;
+font-size: 18px;
+}
+.f-address li a {
+color: #ccc;
+}
+.footer-wrapper {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center
+}
+.about-us {
+text-align: center;
+}
+.v-application ul, .v-application ol {
+padding: 0px !important;
+}
+.social-wrapper {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center
+}
+.copyright {
+background-color: #000;
+padding: 12px 0;
+font-size:14px;
+}
 </style>

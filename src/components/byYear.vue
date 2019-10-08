@@ -1,5 +1,6 @@
 <template>
   <div class="chartElem mt-5">
+    <h1 class="wellcome-header">Highest-grossing movies of all time!</h1>
     <div class="chart-row">
       <div>Top 5 grossing movies in the year 2019</div>
       <highcharts class="chart" :options="chartOptions2019" style="height: 700px; width: 70%;" data-sal="slide-up"

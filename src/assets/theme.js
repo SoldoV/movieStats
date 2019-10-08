@@ -1,5 +1,5 @@
 export default {
-  'colors': ['#d35400', '#2980b9', '#2ecc71', '#f1c40f', '#2c3e50', '#7f8c8d'],
+  'colors': ['#F44336', '#2980b9', '#2ecc71', '#f1c40f', '#2c3e50', '#7f8c8d'],
   'chart': {
     'backgroundColor': '#202020',
     'style': {
