@@ -171,6 +171,8 @@ export default {
 <style>
   .bio-header {
     text-align: center;
+    font-weight: 300;
+    font-size: 44px;
   }
 
   .biography {

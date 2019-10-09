@@ -47,11 +47,12 @@ export default {
           height: '100%'
         },
         title: {
-          text: 'Movie revenue by year'
+          text: 'Movie revenue by years'
         },
         tooltip: {
-          useHTML: true,
-          pointFormat: 'Movie: <b>' + this.point.name + '</b><br>Revenue: <b>' + this.point.value + '</b>'
+          formatter: function () {
+            return 'Movie: <b>' + this.point.name + '<b><br> Revenue: $' + this.point.value
+          }
         },
         plotOptions: {
           packedbubble: {
@@ -100,7 +101,6 @@ export default {
         },
         tooltip: {
           formatter: function () {
-            console.log(this.point)
             return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
           }
         },
@@ -111,9 +111,6 @@ export default {
         },
         chart: {
           type: 'column'
-        },
-        title: {
-          text: 'Sin chart'
         },
         xAxis: {
           categories: [],
@@ -131,7 +128,6 @@ export default {
         },
         tooltip: {
           formatter: function () {
-            console.log(this.point)
             return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
           }
         },
@@ -142,9 +138,6 @@ export default {
         },
         chart: {
           type: 'column'
-        },
-        title: {
-          text: 'Sin chart'
         },
         xAxis: {
           categories: [],
@@ -162,7 +155,6 @@ export default {
         },
         tooltip: {
           formatter: function () {
-            console.log(this.point)
             return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
           }
         },
@@ -173,9 +165,6 @@ export default {
         },
         chart: {
           type: 'column'
-        },
-        title: {
-          text: 'Sin chart'
         },
         xAxis: {
           categories: [],
@@ -193,7 +182,6 @@ export default {
         },
         tooltip: {
           formatter: function () {
-            console.log(this.point)
             return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
           }
         },
@@ -204,9 +192,6 @@ export default {
         },
         chart: {
           type: 'column'
-        },
-        title: {
-          text: 'Sin chart'
         },
         xAxis: {
           categories: [],
@@ -224,7 +209,6 @@ export default {
         },
         tooltip: {
           formatter: function () {
-            console.log(this.point)
             return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
           }
         },
@@ -235,9 +219,6 @@ export default {
         },
         chart: {
           type: 'column'
-        },
-        title: {
-          text: 'Sin chart'
         },
         xAxis: {
           categories: [],
@@ -313,6 +294,8 @@ export default {
   }
 
   .chart-row {
+    margin-bottom: 10em;
+    margin-top: 2em;
     display: flex;
     flex-direction: column;
     justify-items: center;

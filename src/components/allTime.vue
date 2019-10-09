@@ -11,7 +11,7 @@
         There are some highly enjoyable movies on here and some films that we can only shake our heads at and marvel at the worldwide moviegoer.
         Here are the 10 highest-grossing movies of all-time:</p>
     </div>
-    <div class="row">
+    <div class="row alltime-chart">
       <highcharts class="chart" :options="chartOptions" style="height: 700px; width: 70%;"
                   data-sal="slide-up"
                   data-sal-delay="100"
@@ -35,9 +35,6 @@ export default {
         },
         chart: {
           type: 'column'
-        },
-        title: {
-          text: 'Sin chart'
         },
         xAxis: {
           categories: [],
@@ -78,5 +75,7 @@ export default {
 .chart {
   margin: 0 auto;
 }
-
+.alltime-chart {
+  margin-bottom: 5em;
+}
 </style>

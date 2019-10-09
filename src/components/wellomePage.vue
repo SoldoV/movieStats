@@ -20,7 +20,11 @@
               data-sal-delay="100"
               data-sal-duration="1000"
               data-sal-easing="ease-out-bounce">
-             <div class="movie-header-gradient"></div>
+             <div class="movie-header-gradient">
+               <div class="movie-header-overlay">
+               <v-btn class="movie-header-overlay-btn"  href='/allTime' small color="#F44336">Top Movies Of all time</v-btn>
+             </div>
+             </div>
          </div>
          <p data-sal="slide-up"
             data-sal-delay="100"
@@ -39,6 +43,9 @@
                data-sal-duration="1000"
                data-sal-easing="ease-out-bounce">
              <div class="movie-header-gradient"></div>
+             <div class="movie-header-overlay">
+               <v-btn class="movie-header-overlay-btn" small href='/actor/all' color="#F44336">Top Actors</v-btn>
+             </div>
          </div>
          <p data-sal="slide-up"
             data-sal-delay="100"
@@ -58,7 +65,11 @@
                  data-sal-delay="100"
                  data-sal-duration="1000"
                  data-sal-easing="ease-out-bounce">
-                <div class="movie-header-gradient"></div>
+                <div class="movie-header-gradient">
+                  <div class="movie-header-overlay">
+               <v-btn class="movie-header-overlay-btn" small href='/director/all' color="#F44336">Top Directors</v-btn>
+             </div>
+                </div>
             </div>
             <p data-sal="slide-up"
                data-sal-delay="100"
@@ -81,7 +92,11 @@
                  data-sal-delay="100"
                  data-sal-duration="1000"
                  data-sal-easing="ease-out-bounce">
-                <div class="movie-header-gradient"></div>
+                <div class="movie-header-gradient">
+                    <div class="movie-header-overlay">
+               <v-btn class="movie-header-overlay-btn" small href='/byYear' color="#F44336">Top Movies by year</v-btn>
+             </div>
+                </div>
             </div>
   </div>
 </template>
@@ -118,6 +133,33 @@ export default {
   background: rgb(32,32,32);
   background: linear-gradient(0deg, rgba(32,32,32,1) 0%, rgba(32,32,32,0) 25%, rgba(32,32,32,0) 75%, rgba(32,32,32,1) 100%);
 }
+.movie-header-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: background 0.7s;
+}
+.movie-header-overlay-btn {
+  border-radius: 0px;
+  color: #F44336;
+  width: 200px;
+  height: 35px !important;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.movie-header-overlay:hover .movie-header-overlay-btn {
+  opacity: 1;
+}
+.movie-header-overlay:hover {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgba(32, 32, 32, 0.5);
+}
+
 .lotr {
   background-image: url('../assets/lotr.jpg');
 }

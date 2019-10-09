@@ -240,7 +240,6 @@ export default {
   },
   methods: {
     getImgUrl (pic) {
-      console.log(pic)
       return pic ? require('../assets/' + pic + '.jpg') : ''
     }
   }
