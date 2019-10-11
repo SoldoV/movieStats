@@ -33,6 +33,14 @@ export default {
         legend: {
           enabled: false
         },
+        tooltip: {
+          formatter: function () {
+            return 'Movie: <b>' + this.point.category + '<b><br> Revenue: $' + this.point.y
+          }
+        },
+        title: {
+          text: ''
+        },
         chart: {
           type: 'column'
         },

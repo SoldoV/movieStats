@@ -109,6 +109,9 @@ export default {
             text: 'Revenue in dollars'
           }
         },
+        title: {
+          text: ''
+        },
         chart: {
           type: 'column'
         },
@@ -139,6 +142,9 @@ export default {
         chart: {
           type: 'column'
         },
+        title: {
+          text: ''
+        },
         xAxis: {
           categories: [],
           crosshair: true
@@ -162,6 +168,9 @@ export default {
           title: {
             text: 'Revenue in dollars'
           }
+        },
+        title: {
+          text: ''
         },
         chart: {
           type: 'column'
@@ -193,6 +202,9 @@ export default {
         chart: {
           type: 'column'
         },
+        title: {
+          text: ''
+        },
         xAxis: {
           categories: [],
           crosshair: true
@@ -219,6 +231,9 @@ export default {
         },
         chart: {
           type: 'column'
+        },
+        title: {
+          text: ''
         },
         xAxis: {
           categories: [],
